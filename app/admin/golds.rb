@@ -1,23 +1,32 @@
 # frozen_string_literal: true
 
-ActiveAdmin.register Cash do
+ActiveAdmin.register Gold do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params investments_attributes: %i[id member_id status notes bought_on sold_on _destroy buy_value sell_value]
+  # permit_params :weight
   #
   # or
   #
   # permit_params do
-  #   permitted = [:inr_value]
+  #   permitted = [:weight]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  # See permitted parameters documentation:
+  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
+  # Uncomment all parameters which should be permitted for assignment
+  #
+  permit_params :weight, investments_attributes: %i[id member_id status notes bought_on sold_on _destroy buy_value sell_value]
+
   form do |f|
     f.inputs do
+      f.input :weight
+
       f.has_many :investments, allow_destroy: true do |item|
         item.input :member
         item.input :buy_value
@@ -29,7 +38,6 @@ ActiveAdmin.register Cash do
         item.input :notes
       end
     end
-
     f.actions
   end
 end

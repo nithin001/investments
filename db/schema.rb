@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_090256) do
+ActiveRecord::Schema.define(version: 2020_12_11_105435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.integer "member_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -37,6 +44,15 @@ ActiveRecord::Schema.define(version: 2020_12_11_090256) do
   create_table "chit_funds", force: :cascade do |t|
     t.integer "duration"
     t.integer "withdrawn_amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "double_entry_transactions", force: :cascade do |t|
+    t.date "transaction_date"
+    t.integer "credit_account_id"
+    t.integer "debit_account_id"
+    t.decimal "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,6 +93,16 @@ ActiveRecord::Schema.define(version: 2020_12_11_090256) do
   create_table "mutual_funds", force: :cascade do |t|
     t.string "product_code"
     t.decimal "units"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "uid"
+    t.date "transaction_date"
+    t.decimal "credit"
+    t.decimal "debit"
+    t.integer "transaction_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

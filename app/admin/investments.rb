@@ -1,5 +1,6 @@
-ActiveAdmin.register Investment do
+# frozen_string_literal: true
 
+ActiveAdmin.register Investment do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -16,13 +17,19 @@ ActiveAdmin.register Investment do
   # end
   #
   index do
+    column :member
     column :buy_value
     column :current_value
     column :status
     column :bought_on
     column :sold_on
     column :investable_type
-
     actions
+
+    div class: 'panel' do
+      para "Total invested amount: #{collection.pluck(:buy_value).reduce(:+)}"
+      br
+      para "Current value of investments: #{collection.map(&:current_value).reduce(:+)}"
+    end
   end
 end

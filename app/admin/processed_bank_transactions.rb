@@ -20,11 +20,11 @@ ActiveAdmin.register ProcessedBankTransaction do
 
   index do
     column :uid
+    column :member
     column :narration
     column :transaction_date
     column :amount
     column :double_entry_transaction
-
     column :action do |item|
       link_to "Create an entry", new_admin_double_entry_transaction_path('processed_bank_transaction_id' => item.id)
     end

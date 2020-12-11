@@ -6,7 +6,7 @@ ActiveAdmin.register BankTransaction do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :notes, :transactions, :type
+  permit_params :notes, :transactions, :type, :member_id
   #
   # or
   #

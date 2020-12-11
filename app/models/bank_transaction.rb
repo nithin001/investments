@@ -3,6 +3,8 @@
 require 'digest/md5'
 
 class BankTransaction < ApplicationRecord
+  belongs_to :member
+
   def process!
     json_transactions = JSON.parse(transactions)
     clean_json_transaction = json_transactions.map do |transaction|
@@ -14,7 +16,7 @@ class BankTransaction < ApplicationRecord
       amount = transaction['Credit Amount'] == '0' ? transaction['Debit Amount'] : transaction['Credit Amount']
       money = Monetize.parse("INR #{amount}")&.cents / 100
       narration = transaction['Narration']
-      ProcessedBankTransaction.where(uid: uid).first_or_create(amount: money, narration: narration, transaction_date: transaction_date)
+      ProcessedBankTransaction.where(uid: uid).first_or_create(amount: money, narration: narration, transaction_date: transaction_date, member: member)
     end
     p 'Completed!'
   end

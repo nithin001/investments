@@ -5,7 +5,7 @@ ActiveAdmin.register Investment do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :notes, :initial, :current, :member_id
+  permit_params :buy_value, :status, :bought_on, :sold_on, :notes, :member_id
   #
   # or
   #
@@ -14,4 +14,15 @@ ActiveAdmin.register Investment do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  #
+  index do
+    column :buy_value
+    column :current_value
+    column :status
+    column :bought_on
+    column :sold_on
+    column :investable_type
+
+    actions
+  end
 end

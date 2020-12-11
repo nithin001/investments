@@ -26,7 +26,7 @@ gem 'devise'
 gem 'activeadmin'
 gem 'httparty'
 gem 'monetize'
-
+gem 'activeadmin-searchable_select'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

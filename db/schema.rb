@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_105435) do
+ActiveRecord::Schema.define(version: 2020_12_11_124123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2020_12_11_105435) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "bank_transactions", force: :cascade do |t|
+    t.string "notes"
+    t.text "transactions"
+    t.string "type", default: "BankTransaction"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "cashes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -55,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_105435) do
     t.decimal "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "processed_bank_transaction_id"
   end
 
   create_table "fixed_deposits", force: :cascade do |t|
@@ -93,6 +102,15 @@ ActiveRecord::Schema.define(version: 2020_12_11_105435) do
   create_table "mutual_funds", force: :cascade do |t|
     t.string "product_code"
     t.decimal "units"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "processed_bank_transactions", force: :cascade do |t|
+    t.string "uid"
+    t.string "narration"
+    t.date "transaction_date"
+    t.decimal "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

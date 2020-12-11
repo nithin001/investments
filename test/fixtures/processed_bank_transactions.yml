@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  double_entry_transaction_id: 1
+  narration: MyString
+  transaction_date: 2020-12-11
+  amount: 9.99
+
+two:
+  uid: MyString
+  double_entry_transaction_id: 1
+  narration: MyString
+  transaction_date: 2020-12-11
+  amount: 9.99

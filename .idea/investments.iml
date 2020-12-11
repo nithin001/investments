@@ -35,6 +35,7 @@
     <orderEntry type="library" scope="PROVIDED" name="actiontext (v6.0.3.4, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionview (v6.0.3.4, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activeadmin (v2.8.1, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activeadmin-searchable_select (v1.2.1, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activejob (v6.0.3.4, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v6.0.3.4, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v6.0.3.4, rbenv: 2.6.3) [gem]" level="application" />
@@ -110,6 +111,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.1.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sassc (v2.4.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sassc-rails (v2.1.2, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="select2-rails (v4.0.13, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v3.142.7, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring (v2.1.1, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring-watcher-listen (v2.0.1, rbenv: 2.6.3) [gem]" level="application" />

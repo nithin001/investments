@@ -17,14 +17,16 @@ ActiveAdmin.register ProcessedBankTransaction do
   #
   #
   config.clear_action_items!
+  scope :with_no_double_entry_transaction
 
   index do
+    column :bank_transaction
     column :uid
     column :member
     column :narration
     column :transaction_date
     column :amount
-    column :double_entry_transaction
+    column :has_double_entry_transaction
     column :action do |item|
       link_to "Create an entry", new_admin_double_entry_transaction_path('processed_bank_transaction_id' => item.id)
     end

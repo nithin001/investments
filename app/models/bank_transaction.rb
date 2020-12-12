@@ -16,7 +16,13 @@ class BankTransaction < ApplicationRecord
       amount = transaction['Credit Amount'] == '0' ? transaction['Debit Amount'] : transaction['Credit Amount']
       money = Monetize.parse("INR #{amount}")&.cents / 100
       narration = transaction['Narration']
-      ProcessedBankTransaction.where(uid: uid).first_or_create(amount: money, narration: narration, transaction_date: transaction_date, member: member)
+      ProcessedBankTransaction
+        .where(uid: uid)
+        .first_or_create(amount: money,
+                         narration: narration,
+                         transaction_date: transaction_date,
+                         member: member,
+                         bank_transaction_id: id)
     end
     p 'Completed!'
   end

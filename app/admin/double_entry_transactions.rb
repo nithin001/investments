@@ -6,7 +6,7 @@ ActiveAdmin.register DoubleEntryTransaction do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :transaction_date, :credit_account_id, :debit_account_id, :amount, :processed_bank_transaction_id, :member_id
+  permit_params :transaction_date, :credit_account_id, :debit_account_id, :amount, :processed_bank_transaction_id, :member_id, tag_ids: []
   #
   # or
   #
@@ -38,9 +38,10 @@ ActiveAdmin.register DoubleEntryTransaction do
       f.input :transaction_date
       f.input :amount
       f.input :member
-      f.input(:credit_account, as: :searchable_select)
-      f.input(:debit_account, as: :searchable_select)
+      f.input :credit_account, input_html: { class: 'select2' }
+      f.input :debit_account, input_html: { class: 'select2' }
       f.input :processed_bank_transaction, as: :select, collection: ProcessedBankTransaction.order(transaction_date: :desc).all.map { |transaction| [transaction.display_value, transaction.id] }
+      f.input :tag_ids, as: :tags, collection: Tag.all, display_name: :name
     end
 
     f.actions

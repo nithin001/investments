@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_070441) do
+ActiveRecord::Schema.define(version: 2020_12_17_050408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2020_12_12_070441) do
     t.integer "member_id"
   end
 
+  create_table "double_entry_transactions_tags", id: false, force: :cascade do |t|
+    t.bigint "double_entry_transaction_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["double_entry_transaction_id", "tag_id"], name: "transaction_tag_index"
+    t.index ["tag_id", "double_entry_transaction_id"], name: "tag_transaction_index"
+  end
+
   create_table "fixed_deposits", force: :cascade do |t|
     t.decimal "maturity_amount"
     t.datetime "created_at", precision: 6, null: false
@@ -117,6 +124,10 @@ ActiveRecord::Schema.define(version: 2020_12_12_070441) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "member_id"
     t.integer "bank_transaction_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "transactions", force: :cascade do |t|

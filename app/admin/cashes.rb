@@ -6,7 +6,7 @@ ActiveAdmin.register Cash do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params investments_attributes: %i[id member_id status notes bought_on sold_on _destroy buy_value sell_value]
+  permit_params investments_attributes: %i[id member_id status source notes bought_on sold_on _destroy buy_value sell_value]
   #
   # or
   #
@@ -27,6 +27,7 @@ ActiveAdmin.register Cash do
         item.input :sold_on
         item.input :status
         item.input :notes
+        item.input :source
       end
     end
 

@@ -7,6 +7,6 @@ class MutualFund < ApplicationRecord
     mf_price = Rails.cache.fetch("today_mf_price#{product_code}", expires_in: 24.hours) do
       MutualFundApi.new(product_code).price
     end
-    units * mf_price
+    (units * mf_price).round(2)
   end
 end

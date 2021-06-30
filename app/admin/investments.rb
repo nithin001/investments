@@ -6,7 +6,7 @@ ActiveAdmin.register Investment do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :buy_value, :status, :bought_on, :sold_on, :notes, :member_id
+  permit_params :buy_value, :status, :bought_on, :sold_on, :notes, :member_id, :source
   #
   # or
   #
@@ -16,14 +16,20 @@ ActiveAdmin.register Investment do
   #   permitted
   # end
   #
+
+  filter :by_year, as: :select, collection: [2019, 2020, 2021, 2022]
+  filter :investable_type
+  filter :member
+  filter :status
+
   index do
     column :member
     column :buy_value
     column :current_value
     column :status
-    column :bought_on
-    column :sold_on
+    column :financial_year
     column :investable_type
+    column :source
     actions
 
     div class: 'panel' do

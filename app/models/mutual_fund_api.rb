@@ -24,6 +24,6 @@ class MutualFundApi
     closing_price_span = spans.find_index('Previous close')
     price_span = spans[closing_price_span + 1]
     money = Monetize.parse("INR #{price_span}")
-    money&.cents / 100
+    (money&.cents * 1.0) / 100
   end
 end

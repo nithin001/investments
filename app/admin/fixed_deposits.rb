@@ -15,7 +15,7 @@ ActiveAdmin.register FixedDeposit do
   #   permitted
   # end
   #
-  permit_params :maturity_amount, investments_attributes: %i[id member_id status notes bought_on sold_on _destroy buy_value sell_value]
+  permit_params :maturity_amount, investments_attributes: %i[id member_id status source notes bought_on sold_on _destroy buy_value sell_value]
 
   form do |f|
     f.inputs do
@@ -30,6 +30,7 @@ ActiveAdmin.register FixedDeposit do
         item.input :sold_on
         item.input :status
         item.input :notes
+        item.input :source
       end
     end
     f.actions

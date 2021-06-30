@@ -22,7 +22,25 @@ ActiveAdmin.register Investment do
   filter :member
   filter :status
 
+  csv do
+    column :member
+    column :buy_value
+    column :current_value
+    column :status
+    column :financial_year
+    column :investable_type
+    column :source
+  end
+
   index do
+    div do
+      react_component 'App', investments: ActiveModelSerializers::SerializableResource.new(
+        collection,
+        each_serializer: InvestmentSerializer,
+        adapter: :attributes
+      ).to_json, targets: Target.all
+    end
+
     column :member
     column :buy_value
     column :current_value
@@ -31,11 +49,5 @@ ActiveAdmin.register Investment do
     column :investable_type
     column :source
     actions
-
-    div class: 'panel' do
-      para "Total invested amount: #{collection.pluck(:buy_value).reduce(:+)}"
-      br
-      para "Current value of investments: #{collection.map(&:current_value).reduce(:+)}"
-    end
   end
 end

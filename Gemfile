@@ -26,9 +26,11 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'activeadmin'
 gem 'activeadmin_addons', git: 'https://github.com/platanus/activeadmin_addons'
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise'
 gem 'httparty'
 gem 'monetize'
+gem 'react-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

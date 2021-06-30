@@ -22,4 +22,8 @@ class Investment < ApplicationRecord
 
     bought_on.year
   end
+
+  def serializer_class
+    InvestmentSerializer
+  end
 end
